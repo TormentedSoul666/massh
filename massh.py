@@ -149,7 +149,7 @@ def main():
 		else:
 			debugPrint("Init multiprocessing Pool() with %s threads" % args.t)
 			p = Pool(processes=args.t)
-			for _ in tqdm.tqdm(p.map(check, targets), total=len(targets)):
+			for _ in tqdm.tqdm(p.imap_unordered(check, targets), total=len(targets)):
 				pass
 	except KeyboardInterrupt:
 #		print(('\n\n' + Fore.YELLOW + '[!]' + Fore.RESET + ' Interrupted!\n    Total IPs tried: %s\n    Total successes: %s\n' % (counter, success)))
